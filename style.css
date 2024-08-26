@@ -1,110 +1,145 @@
 body {
-  font-family: "Arial", sans-serif;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  color: #fff;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradiente de fondo vibrante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
 }
 
 .container {
-  background: #fff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 
 .container::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 10%,
-    transparent 70%
-  );
-  opacity: 0.2;
-  z-index: 0;
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 70%);
+    opacity: 0.2;
+    z-index: 0;
 }
 
 h1 {
-  color: #2a5298;
-  margin-bottom: 20px;
-  z-index: 1;
+    color: #2a5298;
+    margin-bottom: 20px;
+    z-index: 1; /* Asegura que el título esté encima del pseudo-elemento */
 }
 
-input,
-select,
-button {
-  padding: 14px;
-  width: calc(100% - 28px);
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-size: 16px;
-  position: relative;
-  z-index: 1;
+input, select {
+    padding: 14px;
+    width: calc(100% - 28px);
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    position: relative;
+    z-index: 1; /* Asegura que los inputs y botones estén encima del pseudo-elemento */
 }
 
 input {
-  background-color: #f0f0f0;
-  color: #333;
-  transition: background-color 0.3s ease;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.3s ease;
 }
 
 input:focus {
-  background-color: #e0e0e0;
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #e0e0e0;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 select {
-  background-color: #f0f0f0;
-  color: #333;
-  transition: background-color 0.3s ease;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.3s ease;
 }
 
 select:focus {
-  background-color: #e0e0e0;
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #e0e0e0;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-button {
-  background-color: #2a5298;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+#spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1.5s linear infinite; /* Aumenta el tiempo de animación para el spinner */
+    margin: 20px auto;
+    display: none; /* Oculto por defecto */
 }
 
-button:hover {
-  background-color: #1e3c72;
-  transform: scale(1.05);
-}
-
-button:active {
-  background-color: #163a6b;
-  transform: scale(0.98);
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 #result {
-  font-size: 20px;
-  font-weight: bold;
-  color: #2a5298;
-  margin-top: 20px;
-  z-index: 1;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2a5298;
+    margin-top: 20px;
+    z-index: 1; /* Asegura que el resultado esté encima del pseudo-elemento */
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 0.5s ease-in-out; /* Transición para la aparición del resultado */
+}
+
+#dark-mode-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #2a5298;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    z-index: 2; /* Asegura que el icono esté encima del pseudo-elemento */
+}
+
+#dark-mode-toggle:hover {
+    color: #1e3c72;
+    transform: scale(1.1);
+}
+
+#dark-mode-toggle:active {
+    color: #163a6b;
+    transform: scale(0.9);
+}
+
+/* Estilo del modo oscuro */
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+.container.dark-mode {
+    background: #1f1f1f;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+input.dark-mode, select.dark-mode {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+#dark-mode-toggle.dark-mode {
+    color: #e0e0e0;
 }

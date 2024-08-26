@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
     <div class="container">
-      <h1>Currency Converter</h1>
-      <input type="number" id="amount" placeholder="Amount" step="0.01" />
-      <select id="from-currency">
-        <option value="CAD" selected>CAD - Canadian Dollar</option>
-        <option value="USD">USD - US Dollar</option>
-        <option value="EUR">EUR - Euro</option>
-        <option value="GBP">GBP - British Pound</option>
-        <option value="JPY">JPY - Japanese Yen</option>
-        <option value="AUD">AUD - Australian Dollar</option>
-        <option value="CNY">CNY - Chinese Yuan</option>
-      </select>
-      <select id="to-currency">
-        <option value="CAD">CAD - Canadian Dollar</option>
-        <option value="USD">USD - US Dollar</option>
-        <option value="EUR">EUR - Euro</option>
-        <option value="GBP">GBP - British Pound</option>
-        <option value="JPY">JPY - Japanese Yen</option>
-        <option value="AUD">AUD - Australian Dollar</option>
-        <option value="CNY">CNY - Chinese Yuan</option>
-      </select>
-      <button onclick="convert()">Convert</button>
-      <div id="result"></div>
+        <h1>Currency Converter</h1>
+        <input type="number" id="amount" placeholder="Amount" step="0.01">
+        <select id="from-currency">
+            <option value="CAD" selected>CAD - Canadian Dollar</option>
+            <option value="USD">USD - US Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="GBP">GBP - British Pound</option>
+            <option value="JPY">JPY - Japanese Yen</option>
+            <option value="AUD">AUD - Australian Dollar</option>
+            <option value="CNY">CNY - Chinese Yuan</option>
+        </select>
+        <select id="to-currency">
+            <option value="CAD">CAD - Canadian Dollar</option>
+            <option value="USD">USD - US Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="GBP">GBP - British Pound</option>
+            <option value="JPY">JPY - Japanese Yen</option>
+            <option value="AUD">AUD - Australian Dollar</option>
+            <option value="CNY">CNY - Chinese Yuan</option>
+        </select>
+        <div id="spinner" class="spinner"></div>
+        <div id="result"></div>
+        <i id="dark-mode-toggle" class="fas fa-moon"></i>
     </div>
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
