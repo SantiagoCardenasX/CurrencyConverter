@@ -1,0 +1,110 @@
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: #fff;
+}
+
+.container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 10%,
+    transparent 70%
+  );
+  opacity: 0.2;
+  z-index: 0;
+}
+
+h1 {
+  color: #2a5298;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+input,
+select,
+button {
+  padding: 14px;
+  width: calc(100% - 28px);
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+input {
+  background-color: #f0f0f0;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+input:focus {
+  background-color: #e0e0e0;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+select {
+  background-color: #f0f0f0;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+select:focus {
+  background-color: #e0e0e0;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  background-color: #2a5298;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #1e3c72;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #163a6b;
+  transform: scale(0.98);
+}
+
+#result {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2a5298;
+  margin-top: 20px;
+  z-index: 1;
+}
