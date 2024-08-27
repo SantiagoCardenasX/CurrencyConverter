@@ -8,10 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const h1 = document.querySelector("h1");
 
   async function fetchRates() {
-    const url = `https://api.exchangerate-api.com/v4/latest/${fromCurrencySelect.value}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error("Network response was not ok");
-    return await response.json();
+    const apiKey = '86d10139070c6507bcc58156';
+    const baseCurrency = fromCurrencySelect.value;
+    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${baseCurrency}`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Network response was not ok. Status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("API Response Data:", data); // Debugging log
+      return data;
+    } catch (error) {
+      console.error("Error fetching rates:", error.message); // Log error message
+      throw error;
+    }
   }
 
   async function convert() {
@@ -29,23 +41,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const data = await fetchRates();
-      const rate = data.rates[toCurrency];
-      const result = amount * rate;
+      
+      // Debugging: Check available rates
+      console.log(`Available rates for ${fromCurrency}:`, data.conversion_rates);
 
-      setTimeout(() => {
-        resultDiv.innerText = `${amount} ${fromCurrency} = ${result.toFixed(
-          2
-        )} ${toCurrency}`;
-        resultDiv.style.opacity = 1;
-      }, 500);
+      if (!data.conversion_rates || !data.conversion_rates[toCurrency]) {
+        throw new Error(`Rate for ${toCurrency} not found`);
+      }
+
+      const rate = data.conversion_rates[toCurrency];
+      const result = amount * rate;
+      resultDiv.innerText = `${amount} ${fromCurrency} = ${result.toFixed(2)} ${toCurrency}`;
     } catch (error) {
-      console.error("Error fetching conversion rate:", error);
+      console.error("Error fetching conversion rate:", error.message);
       resultDiv.innerText = "Error fetching conversion rate.";
-      resultDiv.style.opacity = 1;
     } finally {
-      setTimeout(() => {
-        spinner.style.display = "none";
-      }, 800);
+      spinner.style.display = "none";
+      resultDiv.style.opacity = 1;
     }
   }
 
